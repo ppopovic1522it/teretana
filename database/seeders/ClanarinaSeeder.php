@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\Clanarina;
 use App\Models\Clan;
+use App\Models\Clanarina;
 use Carbon\Carbon;
+use Illuminate\Database\Seeder;
 
 class ClanarinaSeeder extends Seeder
 {

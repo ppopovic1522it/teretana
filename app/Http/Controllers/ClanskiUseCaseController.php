@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class ClanskiUseCaseController extends Controller
 {
-    
     public function zakaziTrening(Request $request)
     {
         $podaci = $request->validate([
@@ -28,7 +27,7 @@ class ClanskiUseCaseController extends Controller
 
             if ($postoji) {
                 return response()->json([
-                    'poruka' => 'Termin nije dostupan (trener je zauzet u tom terminu).'
+                    'poruka' => 'Termin nije dostupan (trener je zauzet u tom terminu).',
                 ], 422);
             }
 
@@ -47,12 +46,11 @@ class ClanskiUseCaseController extends Controller
         });
     }
 
-    
     public function otkaziTrening(TreningTermin $treningTermin)
     {
         if ($treningTermin->status !== 'zakazan') {
             return response()->json([
-                'poruka' => 'Možeš otkazati samo termin koji je zakazan.'
+                'poruka' => 'Možeš otkazati samo termin koji je zakazan.',
             ], 422);
         }
 
@@ -66,7 +64,6 @@ class ClanskiUseCaseController extends Controller
         ]);
     }
 
-    
     public function statusClanarine(Clan $clan)
     {
         return response()->json([

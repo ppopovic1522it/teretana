@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\TreningTermin;
 use App\Models\Clan;
+use App\Models\TreningTermin;
 use Carbon\Carbon;
+use Illuminate\Database\Seeder;
 
 class TreningTerminSeeder extends Seeder
 {

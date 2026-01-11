@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Clan;
 use App\Models\Trener;
+use Illuminate\Database\Seeder;
 
 class ClanSeeder extends Seeder
 {
@@ -15,7 +15,7 @@ class ClanSeeder extends Seeder
         $trener1 = Trener::query()->first();
         $trener2 = Trener::query()->skip(1)->first() ?? $trener1;
 
-        if (!$trener1) {
+        if (! $trener1) {
             return;
         }
 

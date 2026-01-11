@@ -18,5 +18,4 @@ class Trener extends Model
     {
         return $this->hasMany(TreningTermin::class);
     }
-
 }

@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clanarinas', function (Blueprint $table) {
-        $table->id();
-        $table->integer('iznos');
-        $table->dateTime('datum_uplate');
-        $table->integer('trajanje');
-        $table->string('status'); // aktivna / uskoro ističe / istekla
-        $table->foreignId('clan_id')->constrained('clans')->cascadeOnDelete();
-        $table->timestamps();
-});
+            $table->id();
+            $table->integer('iznos');
+            $table->dateTime('datum_uplate');
+            $table->integer('trajanje');
+            $table->string('status'); // aktivna / uskoro ističe / istekla
+            $table->foreignId('clan_id')->constrained('clans')->cascadeOnDelete();
+            $table->timestamps();
+        });
 
     }
 

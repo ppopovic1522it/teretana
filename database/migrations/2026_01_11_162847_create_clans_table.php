@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clans', function (Blueprint $table) {
-        $table->id();
-        $table->string('ime');
-        $table->string('prezime');
-        $table->string('kontakt');
-        $table->string('clanski_broj')->unique();
-        $table->foreignId('izabrani_trener_id')->nullable()->constrained('treners')->nullOnDelete();
-        $table->string('status_clanarine'); 
-        $table->timestamps();
-});
+            $table->id();
+            $table->string('ime');
+            $table->string('prezime');
+            $table->string('kontakt');
+            $table->string('clanski_broj')->unique();
+            $table->foreignId('izabrani_trener_id')->nullable()->constrained('treners')->nullOnDelete();
+            $table->string('status_clanarine');
+            $table->timestamps();
+        });
 
     }
 

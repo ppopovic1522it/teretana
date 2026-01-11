@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-        TrenerSeeder::class,
-        ClanSeeder::class,
-        ClanarinaSeeder::class,
-        TreningTerminSeeder::class,
-]);
+            TrenerSeeder::class,
+            ClanSeeder::class,
+            ClanarinaSeeder::class,
+            TreningTerminSeeder::class,
+        ]);
 
     }
 }
