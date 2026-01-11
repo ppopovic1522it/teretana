@@ -2,16 +2,17 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Trener;
 
 class TrenerSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        //
+        Trener::query()->delete();
+
+        Trener::create(['ime' => 'Marko', 'prezime' => 'Janković']);
+        Trener::create(['ime' => 'Ana', 'prezime' => 'Nikolić']);
+        Trener::create(['ime' => 'Nemanja', 'prezime' => 'Stojanović']);
     }
 }

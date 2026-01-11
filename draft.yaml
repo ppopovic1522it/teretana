@@ -1,0 +1,36 @@
+models:
+  Trener:
+    ime: string
+    prezime: string
+
+  Clan:
+    ime: string
+    prezime: string
+    kontakt: string
+    clanski_broj: string unique
+    status_clanarine: string
+    izabrani_trener_id: id foreign:treners nullable
+
+  Clanarina:
+    iznos: integer
+    datum_uplate: datetime
+    trajanje: integer
+    status: string
+    clan_id: id foreign:clans
+
+  TreningTermin:
+    datum_i_vreme: datetime
+    tip: string
+    status: string
+    clan_id: id foreign:clans
+    trener_id: id foreign:treners
+
+controllers:
+  Trener:
+    resource
+  Clan:
+    resource
+  Clanarina:
+    resource
+  TreningTermin:
+    resource
