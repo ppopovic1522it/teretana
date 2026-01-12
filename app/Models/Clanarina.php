@@ -15,6 +15,6 @@ class Clanarina extends Model
 
     public function clan(): BelongsTo
     {
-        return $this->belongsTo(Clan::class);
+        return $this->belongsTo(\App\Models\Clan::class);
     }
 }

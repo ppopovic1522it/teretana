@@ -7,59 +7,61 @@ use Illuminate\Http\Request;
 
 class TrenerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $treners = Trener::orderBy('prezime')->paginate(10);
+        return view('treners.index', compact('treners'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('treners.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'ime' => ['required', 'string', 'max:255'],
+            'prezime' => ['required', 'string', 'max:255'],
+        ]);
+
+        Trener::create($data);
+
+        return redirect()
+            ->route('treners.index')
+            ->with('success', 'Trener je uspešno dodat.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Trener $trener)
     {
-        //
+        return view('treners.show', compact('trener'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Trener $trener)
     {
-        //
+        return view('treners.edit', compact('trener'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Trener $trener)
     {
-        //
+        $data = $request->validate([
+            'ime' => ['required', 'string', 'max:255'],
+            'prezime' => ['required', 'string', 'max:255'],
+        ]);
+
+        $trener->update($data);
+
+        return redirect()
+            ->route('treners.index')
+            ->with('success', 'Trener je uspešno izmenjen.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Trener $trener)
     {
-        //
+        $trener->delete();
+
+        return redirect()
+            ->route('treners.index')
+            ->with('success', 'Trener je obrisan.');
     }
 }
