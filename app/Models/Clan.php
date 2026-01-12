@@ -24,6 +24,7 @@ class Clan extends Model
     {
         return $this->hasMany(TreningTermin::class);
     }
+
     public function trener(): BelongsTo
     {
         return $this->belongsTo(Trener::class, 'izabrani_trener_id');

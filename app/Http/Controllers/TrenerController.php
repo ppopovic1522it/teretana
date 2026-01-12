@@ -10,6 +10,7 @@ class TrenerController extends Controller
     public function index()
     {
         $treners = Trener::orderBy('prezime')->paginate(10);
+
         return view('treners.index', compact('treners'));
     }
 

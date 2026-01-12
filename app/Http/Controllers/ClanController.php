@@ -21,6 +21,7 @@ class ClanController extends Controller
     public function create()
     {
         $treners = Trener::orderBy('prezime')->get();
+
         return view('clans.create', compact('treners'));
     }
 
@@ -45,12 +46,14 @@ class ClanController extends Controller
     public function show(Clan $clan)
     {
         $clan->load('trener');
+
         return view('clans.show', compact('clan'));
     }
 
     public function edit(Clan $clan)
     {
         $treners = Trener::orderBy('prezime')->get();
+
         return view('clans.edit', compact('clan', 'treners'));
     }
 

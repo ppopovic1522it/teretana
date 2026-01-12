@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\Clanarina;
 use App\Models\Clan;
+use App\Models\Clanarina;
+use Illuminate\Database\Seeder;
 
 class ClanarinaSeeder extends Seeder
 {
@@ -12,7 +12,7 @@ class ClanarinaSeeder extends Seeder
     {
         $clan = Clan::first();
 
-        if (!$clan) {
+        if (! $clan) {
             return; // ako nema clanova, preskoci
         }
 

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clanarina;
 use App\Models\Clan;
+use App\Models\Clanarina;
 use Illuminate\Http\Request;
 
 class ClanarinaController extends Controller
