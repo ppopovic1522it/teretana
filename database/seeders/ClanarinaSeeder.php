@@ -1,83 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Database\Seeders;
 
+use Illuminate\Database\Seeder;
 use App\Models\Clanarina;
 use App\Models\Clan;
-use Illuminate\Http\Request;
 
-class ClanarinaController extends Controller
+class ClanarinaSeeder extends Seeder
 {
-    public function index()
+    public function run(): void
     {
-        $clanarinas = Clanarina::with('clan')
-            ->orderByDesc('datum_uplate')
-            ->paginate(10);
+        $clan = Clan::first();
 
-        return view('clanarinas.index', compact('clanarinas'));
-    }
+        if (!$clan) {
+            return; // ako nema clanova, preskoci
+        }
 
-    public function create()
-    {
-        $clans = Clan::orderBy('prezime')->orderBy('ime')->get();
-
-        return view('clanarinas.create', compact('clans'));
-    }
-
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'clan_id' => ['required', 'integer', 'exists:clans,id'],
-            'iznos' => ['required', 'integer', 'min:0'],
-            'datum_uplate' => ['required', 'date'],
-            'trajanje' => ['required', 'integer', 'min:1'],
-            'status' => ['required', 'string', 'max:255'],
+        Clanarina::create([
+            'clan_id' => $clan->id,
+            'iznos' => 3000,
+            'datum_uplate' => now(),
+            'trajanje' => 30,
+            'status' => 'aktivna',
         ]);
-
-        Clanarina::create($data);
-
-        return redirect()
-            ->route('clanarinas.index')
-            ->with('success', 'Uplata članarine je uspešno dodata.');
-    }
-
-    public function show(Clanarina $clanarina)
-    {
-        $clanarina->load('clan');
-
-        return view('clanarinas.show', compact('clanarina'));
-    }
-
-    public function edit(Clanarina $clanarina)
-    {
-        $clans = Clan::orderBy('prezime')->orderBy('ime')->get();
-
-        return view('clanarinas.edit', compact('clanarina', 'clans'));
-    }
-
-    public function update(Request $request, Clanarina $clanarina)
-    {
-        $data = $request->validate([
-            'clan_id' => ['required', 'integer', 'exists:clans,id'],
-            'iznos' => ['required', 'integer', 'min:0'],
-            'datum_uplate' => ['required', 'date'],
-            'trajanje' => ['required', 'integer', 'min:1'],
-            'status' => ['required', 'string', 'max:255'],
-        ]);
-
-        $clanarina->update($data);
-
-        return redirect()
-            ->route('clanarinas.index')
-            ->with('success', 'Uplata članarine je uspešno izmenjena.');
-    }
-
-    public function destroy(Clanarina $clanarina)
-    {
-        $clanarina->delete();
-
-        return redirect()
-            ->route('clanarinas.index')
-            ->with('success', 'Uplata je obrisana.');
     }
 }
